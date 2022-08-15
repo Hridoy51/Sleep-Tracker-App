@@ -29,18 +29,27 @@ class SleepQualityViewModel(
         private val sleepNightKey: Long = 0L,
         val database: SleepDatabaseDao) : ViewModel() {
 
-
+    // Multiple threads can ask for the database at the same time, ensure we only initialize
+    // it once by using synchronized. Only one thread may enter a synchronized block at a
+    // time.
 
     private val _navigateToSleepTracker = MutableLiveData<Boolean?>()
-
+    // Multiple threads can ask for the database at the same time, ensure we only initialize
+    // it once by using synchronized. Only one thread may enter a synchronized block at a
+    // time.
 
     val navigateToSleepTracker: LiveData<Boolean?>
         get() = _navigateToSleepTracker
 
-
+    // Multiple threads can ask for the database at the same time, ensure we only initialize
+    // it once by using synchronized. Only one thread may enter a synchronized block at a
+    // time.
     fun doneNavigating() {
         _navigateToSleepTracker.value = null
     }
+    // Multiple threads can ask for the database at the same time, ensure we only initialize
+    // it once by using synchronized. Only one thread may enter a synchronized block at a
+    // time.
 
 
     fun onSetSleepQuality(quality: Int) {
